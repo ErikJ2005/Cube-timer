@@ -4,4 +4,3 @@ setuptools == 75.2.0
 zope.interface == 7.1.1
 datetime == 5.5
 magiccube == 0.3.0
-streamlit-cookies-manager
