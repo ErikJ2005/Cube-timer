@@ -1,7 +1,9 @@
-streamlit
-pandas
-datetime
+streamlit == 1.39.0
+pandas == 2.2.3
+setuptools == 75.2.0
+zope.interface == 7.1.1
+datetime == 5.5
 os
 random
-magiccube
-PIL
+magiccube == 0.3.0
+PIL = 
