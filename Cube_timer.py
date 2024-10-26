@@ -77,7 +77,7 @@ def show_cube_image(scramble: str, size: int, pixel_size=25, border_size=1):
     cube = "W" * size * size + "O" * size * size + "G" * size * size + "R" * size * size + "B" * size * size + "Y" * size * size
     cube = magiccube.Cube(size, cube)
     cube.rotate(scramble)
-    color_map = {"W": (255, 255, 255), "O": (255, 165, 0), "R": (255, 0, 0), "B": (0, 0, 255), "G": (0, 128, 0), "Y": (255, 255, 0), "⬛": (50, 50, 50)}
+    color_map = {"W": (255, 255, 255), "O": (255, 165, 0), "R": (255, 0, 0), "B": (0, 0, 255), "G": (0, 128, 0), "Y": (255, 255, 0), "⬛": (14, 17, 23)}
 
     cube_str = str(cube).replace(" ", "").split()
     image_width = (size * 4) * pixel_size
