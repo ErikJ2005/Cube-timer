@@ -181,3 +181,8 @@ if times:
 
 # Vis bilde av kuben basert på scramble
 st.write(show_cube_image(st.session_state.scramble, size))
+
+if times:
+    #Lagger line chart av enkelttidene
+    st.subheader("Line chart of all single times")
+    st.line_chart(df["Tid"], x_label="Solves", y_label="Time (seconds)")
