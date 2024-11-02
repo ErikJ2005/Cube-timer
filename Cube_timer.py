@@ -29,7 +29,7 @@ def generate_scramble(cube_type: str) -> str:
         scramble.append(move + modifier)
         last_move = move
     return " ".join(scramble)
-
+    
 # Funksjon for å konvertere tid-format til sekunder i desimalformat
 def time_to_seconds(time_str: str) -> float:
     try:
@@ -96,6 +96,13 @@ def show_cube_image(scramble: str, size: int, pixel_size=25, border_size=1):
                     image.putpixel(((x_offset + j) * pixel_size + x, (y_offset + i) * pixel_size + y), color)
     return image
 
+# Funksjon for å legge til en ny tid og scramble
+@st.cache_data(max_entries=10000)
+def add_time(times: list, new_time: float, scramble: str) -> list:
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    times.append((new_time, scramble, current_time))
+    return times
+
 # Sjekker om session_state inneholder tidene for valgt kube
 if "time" not in st.session_state:
     st.session_state.time = ""
@@ -136,8 +143,7 @@ st.session_state.time = ""
 if new_time:
     total_seconds = time_to_seconds(new_time)
     if total_seconds is not None:
-        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        times.append((total_seconds, st.session_state.scramble, current_time))
+        times = add_time(times, total_seconds, st.session_state.scramble)
         st.session_state.times[option] = times  # Oppdaterer session_state
         st.session_state.scramble = generate_scramble(option)
         
